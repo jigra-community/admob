@@ -67,9 +67,14 @@ Don't forget to replace `[APP_ID]` by your AdMob application Id.
 import { AdMob } from '@jigra-community/admob';
 
 export async function initialize(): Promise<void> {
-  const [consentInfo, trackingInfo] = await Promise.all([AdMob.requestConsentInfo(), AdMob.trackingAuthorizationStatus()]);
+  await AdMob.initialize();
 
-  if (consentInfo.status === AdmobConsentStatus.REQUIRED && trackingInfo.status === 'notDetermined') {
+  const [trackingInfo, consentInfo] = await Promise.all([
+    AdMob.trackingAuthorizationStatus(),
+    AdMob.requestConsentInfo(),
+  ]);
+
+  if (trackingInfo.status === 'notDetermined') {
     /**
      * If you want to explain TrackingAuthorization before showing the iOS dialog,
      * you can show the modal here.
@@ -81,11 +86,11 @@ export async function initialize(): Promise<void> {
      * await modal.onDidDismiss();  // Wait for close modal
      **/
 
-    if (consentInfo.isConsentFormAvailable) {
-      await AdMob.showConsentForm();
-    } else {
-      await AdMob.requestTrackingAuthorization();
-    }
+    await AdMob.requestTrackingAuthorization();
+  }
+
+  if (consentInfo.isConsentFormAvailable && consentInfo.status === AdmobConsentStatus.REQUIRED) {
+    await AdMob.showConsentForm();
   }
 }
 ```
