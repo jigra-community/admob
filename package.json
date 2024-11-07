@@ -1,6 +1,6 @@
 {
   "name": "@jigra-community/admob",
-  "version": "5.3.2",
+  "version": "6.0.0-0",
   "description": "A native plugin for AdMob",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -47,11 +47,11 @@
     "@familyjs/prettier-config": "^2.0.0",
     "@familyjs/swiftlint": "^1.0.2",
     "@familyjs/swiftlint-config": "^1.1.4",
-    "@jigra/android": "5.0.5",
-    "@jigra/cli": "5.0.5",
-    "@jigra/core": "5.0.5",
+    "@jigra/android": "6.0.0",
+    "@jigra/cli": "6.0.0",
+    "@jigra/core": "6.0.0",
     "@jigra/docgen": "0.2.2",
-    "@jigra/ios": "5.0.5",
+    "@jigra/ios": "6.0.0",
     "eslint": "^7.11.0",
     "husky": "^4.3.8",
     "lint-staged": "^11.0.0",
@@ -64,7 +64,7 @@
     "typescript": "~4.1.5"
   },
   "dependencies": {
-    "@jigra/core": "5.0.5"
+    "@jigra/core": "6.0.0"
   },
   "husky": {
     "hooks": {
